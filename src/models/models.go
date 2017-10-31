@@ -1,12 +1,12 @@
 package models
 
 type User struct {
-	UserId   int    `json:"userId,string"`
+	UserId   int    `json:"userId,string,omitempty"`
 	Password string `json:"password,omitempty"`
-	Name     string `json:"name"`
-	Sex      string `json:"sex"`
-	Phone    string `json:"phone"`
-	RoleId   int    `json:"roleId,string"`
+	Name     string `json:"name,omitempty"`
+	Sex      string `json:"sex,omitempty"`
+	Phone    string `json:"phone,omitempty"`
+	RoleId   int    `json:"roleId,string,omitempty"`
 }
 
 type Role struct {
@@ -53,7 +53,7 @@ type Product struct {
 }
 
 type UserSale struct {
-	UserId int
-	ProId  int
-	Marks  string `备注`
+	UserId int    `json:"userId,string"`
+	ProId  int    `json:"proId,string"`
+	Marks  string `json:"marks"`
 }

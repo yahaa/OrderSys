@@ -18,10 +18,9 @@ func init() {
 
 	Router.Use(cors.Default())
 
-	all:=Router.Group("/api")
+	all := Router.Group("/api")
 	all.Use(Auth.MiddlewareFunc())
-	all.GET("/test",test)
-
+	all.GET("/test", test)
 
 	Router.POST("/login", AuthAdmin.LoginHandler)
 	admin := Router.Group("api/admin")
@@ -35,17 +34,18 @@ func init() {
 	admin.GET("/product", GetPro)
 	admin.DELETE("/product", DelPro)
 	admin.PUT("/product", UPPro)
-	admin.GET("/salers", GetSals) //获取系统中所有销售员以及其销售情况
-	admin.PUT("/saler", UPSal)    //更新销售任务
+	admin.POST("/saler", AddSaler)
+	admin.DELETE("/saler", DelSaler)
+	admin.GET("/salers", GetSals) //获取系统中所有销售员以及其销售情
 
 	saler := Router.Group("api/saler")
 	saler.Use(AuthSaler.MiddlewareFunc())
 	saler.GET("/tasks", AllTasks) //获取自己的销售的所有商品
-	saler.GET("/orders", AllOrds) //获取自己经办的所有订单
+	saler.GET("/orders", AllOrds) //获取自己经办的所有订单 **未测试
 
 	cus := Router.Group("api/cus")
 	cus.Use(AuthCus.MiddlewareFunc())
-	cus.GET("/products", AllSales) //获取所有销售员在销售的商品
+	cus.GET("/products", AllSalePros) //获取所有销售员在销售的商品
 	cus.GET("/orders", GetOrds)    //获取自己的订单
 	cus.POST("/order", MakOrder)   //下订单
 	cus.GET("/order", DetOrder)    //某个订单详情

@@ -121,10 +121,32 @@ func UPPro(c *gin.Context) {
 
 }
 
-func GetSals(c *gin.Context) {
-
+func AddSaler(c *gin.Context) {
+	var sal models.UserSale
+	c.BindJSON(&sal)
+	if models.AddSaler(sal.UserId, sal.ProId, sal.Marks) {
+		c.JSON(200, Good)
+	} else {
+		c.JSON(400, Bad)
+	}
 }
 
-func UPSal(c *gin.Context) {
-
+func DelSaler(c *gin.Context) {
+	var sal models.UserSale
+	c.BindJSON(&sal)
+	if models.DelSaler(sal.UserId, sal.ProId) {
+		c.JSON(200, Good)
+	} else {
+		c.JSON(400, Bad)
+	}
+}
+func GetSals(c *gin.Context) {
+	var us []models.UserSale
+	data, err := models.GetSales()
+	if err != nil {
+		log.Fatalln(err.Error())
+		c.JSON(403, Bad)
+	}
+	err = json.Unmarshal([]byte(data), &us)
+	c.JSON(200, us)
 }

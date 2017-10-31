@@ -4,9 +4,9 @@
     <root id="1"/>
     <schema id="2" parent="1" name="ZIHUA">
       <ObjectId>103</ObjectId>
-      <IntrospectionTimestamp>2017-10-31.20:56:44</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-10-31.22:12:49</IntrospectionTimestamp>
       <CreatedTimestamp>2017-10-30.17:58:21</CreatedTimestamp>
-      <ModifiedTimestamp>2017-10-31.20:56:43</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-10-31.22:12:48</ModifiedTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -160,7 +160,7 @@
     <table id="46" parent="2" name="USERSALER">
       <ObjectId>92026</ObjectId>
       <CreatedTimestamp>2017-10-30.18:55:38</CreatedTimestamp>
-      <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-10-31.22:12:48</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <column id="47" parent="40" name="ORDID">
@@ -493,7 +493,12 @@ PERID</ColNames>
       <Position>3</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <index id="103" parent="46" name="SYS_C0010083">
+    <column id="103" parent="46" name="USE">
+      <Position>4</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <DefaultExpression>0 </DefaultExpression>
+    </column>
+    <index id="104" parent="46" name="SYS_C0010083">
       <ObjectId>92027</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.18:55:38</CreatedTimestamp>
@@ -503,7 +508,7 @@ PERID</ColNames>
 PROID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="104" parent="46" name="SYS_C0010083">
+    <key id="105" parent="46" name="SYS_C0010083">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
       <ColNames>USERID
@@ -512,7 +517,7 @@ PROID</ColNames>
       <UnderlyingIndexName>SYS_C0010083</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="105" parent="46" name="SYS_C0010084">
+    <foreign-key id="106" parent="46" name="SYS_C0010084">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
       <ColNames>USERID</ColNames>
@@ -521,7 +526,7 @@ PROID</ColNames>
       <RefKeyName>SYS_C0010058</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="106" parent="46" name="SYS_C0010085">
+    <foreign-key id="107" parent="46" name="SYS_C0010085">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
       <ColNames>PROID</ColNames>
