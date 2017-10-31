@@ -23,6 +23,10 @@ func CheckLogin(userId string, password string, c *gin.Context) (string, bool) {
 		log.Fatalln(err.Error())
 		return "", false
 	}
+
+	if uId == "" {
+		return "", false
+	}
 	return uId, true
 }
 
@@ -45,6 +49,13 @@ func authSaler(userId string, c *gin.Context) bool {
 //认证是客户的权限
 func authCus(userId string, c *gin.Context) bool {
 	if models.CheckRole(userId, Customer) {
+		return true
+	}
+	return false
+}
+
+func auth(userId string, c *gin.Context) bool {
+	if models.CheckExisU(userId) {
 		return true
 	}
 	return false
@@ -90,6 +101,19 @@ var AuthCus = &jwt.GinJWTMiddleware{
 	MaxRefresh:    time.Hour,
 	Authenticator: CheckLogin,
 	Authorizator:  authCus,
+	Unauthorized:  UnAuth,
+	TokenLookup:   "header:Authorization",
+	TokenHeadName: "Bearer",
+	TimeFunc:      time.Now,
+}
+
+var Auth = &jwt.GinJWTMiddleware{
+	Realm:         Real,
+	Key:           []byte(Key),
+	Timeout:       time.Hour,
+	MaxRefresh:    time.Hour,
+	Authenticator: CheckLogin,
+	Authorizator:  auth,
 	Unauthorized:  UnAuth,
 	TokenLookup:   "header:Authorization",
 	TokenHeadName: "Bearer",
