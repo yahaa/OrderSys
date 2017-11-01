@@ -4,9 +4,9 @@
     <root id="1"/>
     <schema id="2" parent="1" name="ZIHUA">
       <ObjectId>103</ObjectId>
-      <IntrospectionTimestamp>2017-10-31.22:12:49</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-11-01.14:03:48</IntrospectionTimestamp>
       <CreatedTimestamp>2017-10-30.17:58:21</CreatedTimestamp>
-      <ModifiedTimestamp>2017-10-31.22:12:48</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-11-01.14:03:47</ModifiedTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -124,7 +124,7 @@
     <table id="40" parent="2" name="ORDERS">
       <ObjectId>92028</ObjectId>
       <CreatedTimestamp>2017-10-30.18:55:43</CreatedTimestamp>
-      <ModifiedTimestamp>2017-10-30.18:55:43</ModifiedTimestamp>
+      <ModifiedTimestamp>2017-11-01.11:13:04</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
     <table id="41" parent="2" name="PERMIT">
@@ -151,71 +151,89 @@
       <ModifiedTimestamp>2017-10-30.17:58:25</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="45" parent="2" name="USERS">
+    <table id="45" parent="2" name="TEST">
+      <ObjectId>92158</ObjectId>
+      <CreatedTimestamp>2017-11-01.13:53:27</CreatedTimestamp>
+      <ModifiedTimestamp>2017-11-01.14:03:47</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="46" parent="2" name="USERS">
       <ObjectId>92016</ObjectId>
       <CreatedTimestamp>2017-10-30.17:58:49</CreatedTimestamp>
       <ModifiedTimestamp>2017-10-31.15:33:45</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <table id="46" parent="2" name="USERSALER">
+    <table id="47" parent="2" name="USERSALER">
       <ObjectId>92026</ObjectId>
       <CreatedTimestamp>2017-10-30.18:55:38</CreatedTimestamp>
       <ModifiedTimestamp>2017-10-31.22:12:48</ModifiedTimestamp>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
-    <column id="47" parent="40" name="ORDID">
+    <column id="48" parent="40" name="ORDID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="48" parent="40" name="USERID">
+    <column id="49" parent="40" name="USERID">
       <Position>2</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="49" parent="40" name="SALEID">
+    <column id="50" parent="40" name="SALEID">
       <Position>3</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="50" parent="40" name="PROID">
+    <column id="51" parent="40" name="PROID">
       <Position>4</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="51" parent="40" name="NUMS">
+    <column id="52" parent="40" name="NUMS">
       <Position>5</Position>
       <DataType>NUMBER(*)|0</DataType>
     </column>
-    <column id="52" parent="40" name="TOTAL">
+    <column id="53" parent="40" name="TOTAL">
       <Position>6</Position>
       <DataType>NUMBER(*)|0</DataType>
     </column>
-    <column id="53" parent="40" name="ORDERTIME">
+    <column id="54" parent="40" name="ORDERTIME">
       <Position>7</Position>
-      <DataType>TIMESTAMP(6)|0</DataType>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
     </column>
-    <column id="54" parent="40" name="MARKS">
+    <column id="55" parent="40" name="MARKS">
       <Position>8</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="55" parent="40" name="ORDCOM">
+    <column id="56" parent="40" name="ORDCOM">
       <Position>9</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="56" parent="40" name="PLAYTIME">
+    <column id="57" parent="40" name="PLAYTIME">
       <Position>10</Position>
-      <DataType>TIMESTAMP(6)|0</DataType>
+      <DataType>VARCHAR2(100)|0</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
     </column>
-    <column id="57" parent="40" name="SALETYPE">
+    <column id="58" parent="40" name="SALETYPE">
       <Position>11</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="58" parent="40" name="DELIVERTYPE">
+    <column id="59" parent="40" name="DELIVERTYPE">
       <Position>12</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <index id="59" parent="40" name="SYS_C0010090">
+    <column id="60" parent="40" name="PRICE">
+      <Position>13</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="61" parent="40" name="USE">
+      <Position>14</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="62" parent="40" name="SYS_C0010090">
       <ObjectId>92029</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.18:55:43</CreatedTimestamp>
@@ -224,7 +242,7 @@
       <ColNames>ORDID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="60" parent="40" name="SYS_C0010090">
+    <key id="63" parent="40" name="SYS_C0010090">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:43</ModifiedTimestamp>
       <ColNames>ORDID</ColNames>
@@ -232,7 +250,7 @@
       <UnderlyingIndexName>SYS_C0010090</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="61" parent="40" name="SYS_C0010091">
+    <foreign-key id="64" parent="40" name="SYS_C0010091">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:43</ModifiedTimestamp>
       <ColNames>USERID</ColNames>
@@ -241,7 +259,7 @@
       <RefKeyName>SYS_C0010058</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="62" parent="40" name="SYS_C0010093">
+    <foreign-key id="65" parent="40" name="SYS_C0010093">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:43</ModifiedTimestamp>
       <ColNames>SALEID</ColNames>
@@ -250,7 +268,7 @@
       <RefKeyName>SYS_C0010058</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="63" parent="40" name="SYS_C0010092">
+    <foreign-key id="66" parent="40" name="SYS_C0010092">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:43</ModifiedTimestamp>
       <ColNames>PROID</ColNames>
@@ -259,17 +277,17 @@
       <RefKeyName>SYS_C0010067</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="64" parent="41" name="PERID">
+    <column id="67" parent="41" name="PERID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="65" parent="41" name="PERNAME">
+    <column id="68" parent="41" name="PERNAME">
       <Position>2</Position>
       <DataType>VARCHAR2(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="66" parent="41" name="SYS_C0010052">
+    <index id="69" parent="41" name="SYS_C0010052">
       <ObjectId>92013</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.17:58:21</CreatedTimestamp>
@@ -278,7 +296,7 @@
       <ColNames>PERID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="67" parent="41" name="SYS_C0010052">
+    <key id="70" parent="41" name="SYS_C0010052">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:21</ModifiedTimestamp>
       <ColNames>PERID</ColNames>
@@ -286,17 +304,17 @@
       <UnderlyingIndexName>SYS_C0010052</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="68" parent="42" name="ROLEID">
+    <column id="71" parent="42" name="ROLEID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="69" parent="42" name="PERID">
+    <column id="72" parent="42" name="PERID">
       <Position>2</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="70" parent="42" name="SYS_C0010062">
+    <index id="73" parent="42" name="SYS_C0010062">
       <ObjectId>92019</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.17:58:58</CreatedTimestamp>
@@ -306,7 +324,7 @@
 PERID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="71" parent="42" name="SYS_C0010062">
+    <key id="74" parent="42" name="SYS_C0010062">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:58</ModifiedTimestamp>
       <ColNames>ROLEID
@@ -315,7 +333,7 @@ PERID</ColNames>
       <UnderlyingIndexName>SYS_C0010062</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="72" parent="42" name="SYS_C0010063">
+    <foreign-key id="75" parent="42" name="SYS_C0010063">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:58</ModifiedTimestamp>
       <ColNames>ROLEID</ColNames>
@@ -324,7 +342,7 @@ PERID</ColNames>
       <RefKeyName>SYS_C0010055</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="73" parent="42" name="SYS_C0010064">
+    <foreign-key id="76" parent="42" name="SYS_C0010064">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:58</ModifiedTimestamp>
       <ColNames>PERID</ColNames>
@@ -333,51 +351,51 @@ PERID</ColNames>
       <RefKeyName>SYS_C0010052</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="74" parent="43" name="PROID">
+    <column id="77" parent="43" name="PROID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="75" parent="43" name="PRONAME">
+    <column id="78" parent="43" name="PRONAME">
       <Position>2</Position>
       <DataType>VARCHAR2(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="76" parent="43" name="PROSM">
+    <column id="79" parent="43" name="PROSM">
       <Position>3</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="77" parent="43" name="PROCOM">
+    <column id="80" parent="43" name="PROCOM">
       <Position>4</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="78" parent="43" name="PROPRICE">
+    <column id="81" parent="43" name="PROPRICE">
       <Position>5</Position>
       <DataType>NUMBER(*)|0</DataType>
     </column>
-    <column id="79" parent="43" name="PROCOUNTS">
+    <column id="82" parent="43" name="PROCOUNTS">
       <Position>6</Position>
       <DataType>NUMBER(*)|0</DataType>
     </column>
-    <column id="80" parent="43" name="PROSTYLE">
+    <column id="83" parent="43" name="PROSTYLE">
       <Position>7</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="81" parent="43" name="ORDERTIME">
+    <column id="84" parent="43" name="ORDERTIME">
       <Position>8</Position>
       <DataType>VARCHAR2(100)|0</DataType>
       <DefaultExpression>NULL</DefaultExpression>
     </column>
-    <column id="82" parent="43" name="MARKS">
+    <column id="85" parent="43" name="MARKS">
       <Position>9</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="83" parent="43" name="USE">
+    <column id="86" parent="43" name="USE">
       <Position>10</Position>
       <DataType>NUMBER(*)|0</DataType>
-      <DefaultExpression>0 </DefaultExpression>
+      <DefaultExpression>0</DefaultExpression>
     </column>
-    <index id="84" parent="43" name="SYS_C0010067">
+    <index id="87" parent="43" name="SYS_C0010067">
       <ObjectId>92021</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.17:59:03</CreatedTimestamp>
@@ -386,7 +404,7 @@ PERID</ColNames>
       <ColNames>PROID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="85" parent="43" name="SYS_C0010067">
+    <key id="88" parent="43" name="SYS_C0010067">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:59:03</ModifiedTimestamp>
       <ColNames>PROID</ColNames>
@@ -394,17 +412,17 @@ PERID</ColNames>
       <UnderlyingIndexName>SYS_C0010067</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="86" parent="44" name="ROLEID">
+    <column id="89" parent="44" name="ROLEID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="87" parent="44" name="ROLENAME">
+    <column id="90" parent="44" name="ROLENAME">
       <Position>2</Position>
       <DataType>VARCHAR2(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="88" parent="44" name="SYS_C0010055">
+    <index id="91" parent="44" name="SYS_C0010055">
       <ObjectId>92015</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.17:58:25</CreatedTimestamp>
@@ -413,7 +431,7 @@ PERID</ColNames>
       <ColNames>ROLEID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="89" parent="44" name="SYS_C0010055">
+    <key id="92" parent="44" name="SYS_C0010055">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:25</ModifiedTimestamp>
       <ColNames>ROLEID</ColNames>
@@ -421,39 +439,66 @@ PERID</ColNames>
       <UnderlyingIndexName>SYS_C0010055</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="90" parent="45" name="USERID">
+    <column id="93" parent="45" name="TID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="91" parent="45" name="NAME">
+    <column id="94" parent="45" name="T">
+      <Position>2</Position>
+      <DataType>TIMESTAMP(6)|0</DataType>
+      <DefaultExpression>NULL</DefaultExpression>
+    </column>
+    <index id="95" parent="45" name="SYS_C0010100">
+      <ObjectId>92159</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2017-11-01.13:53:28</CreatedTimestamp>
+      <ModifiedTimestamp>2017-11-01.13:53:28</ModifiedTimestamp>
+      <TablespaceName>USERS</TablespaceName>
+      <ColNames>TID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="96" parent="45" name="SYS_C0010100">
+      <NameSurrogate>1</NameSurrogate>
+      <ModifiedTimestamp>2017-11-01.13:53:28</ModifiedTimestamp>
+      <ColNames>TID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>SYS_C0010100</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="97" parent="46" name="USERID">
+      <Position>1</Position>
+      <DataType>NUMBER(*)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="98" parent="46" name="NAME">
       <Position>2</Position>
       <DataType>VARCHAR2(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="92" parent="45" name="SEX">
+    <column id="99" parent="46" name="SEX">
       <Position>3</Position>
       <DataType>VARCHAR2(20)|0</DataType>
     </column>
-    <column id="93" parent="45" name="PHONE">
+    <column id="100" parent="46" name="PHONE">
       <Position>4</Position>
       <DataType>VARCHAR2(15)|0</DataType>
     </column>
-    <column id="94" parent="45" name="ROLEID">
+    <column id="101" parent="46" name="ROLEID">
       <Position>5</Position>
       <DataType>NUMBER(*)|0</DataType>
     </column>
-    <column id="95" parent="45" name="PASSWORD">
+    <column id="102" parent="46" name="PASSWORD">
       <Position>6</Position>
       <DataType>VARCHAR2(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="96" parent="45" name="USE">
+    <column id="103" parent="46" name="USE">
       <Position>7</Position>
       <DataType>NUMBER(*)|0</DataType>
-      <DefaultExpression>0 </DefaultExpression>
+      <DefaultExpression>0</DefaultExpression>
     </column>
-    <index id="97" parent="45" name="SYS_C0010058">
+    <index id="104" parent="46" name="SYS_C0010058">
       <ObjectId>92017</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.17:58:49</CreatedTimestamp>
@@ -462,7 +507,7 @@ PERID</ColNames>
       <ColNames>USERID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="98" parent="45" name="SYS_C0010058">
+    <key id="105" parent="46" name="SYS_C0010058">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:49</ModifiedTimestamp>
       <ColNames>USERID</ColNames>
@@ -470,7 +515,7 @@ PERID</ColNames>
       <UnderlyingIndexName>SYS_C0010058</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="99" parent="45" name="SYS_C0010059">
+    <foreign-key id="106" parent="46" name="SYS_C0010059">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.17:58:49</ModifiedTimestamp>
       <ColNames>ROLEID</ColNames>
@@ -479,26 +524,26 @@ PERID</ColNames>
       <RefKeyName>SYS_C0010055</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="100" parent="46" name="USERID">
+    <column id="107" parent="47" name="USERID">
       <Position>1</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="101" parent="46" name="PROID">
+    <column id="108" parent="47" name="PROID">
       <Position>2</Position>
       <DataType>NUMBER(*)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="102" parent="46" name="MARKS">
+    <column id="109" parent="47" name="MARKS">
       <Position>3</Position>
       <DataType>VARCHAR2(100)|0</DataType>
     </column>
-    <column id="103" parent="46" name="USE">
+    <column id="110" parent="47" name="USE">
       <Position>4</Position>
       <DataType>NUMBER(*)|0</DataType>
-      <DefaultExpression>0 </DefaultExpression>
+      <DefaultExpression>0</DefaultExpression>
     </column>
-    <index id="104" parent="46" name="SYS_C0010083">
+    <index id="111" parent="47" name="SYS_C0010083">
       <ObjectId>92027</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2017-10-30.18:55:38</CreatedTimestamp>
@@ -508,7 +553,7 @@ PERID</ColNames>
 PROID</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="105" parent="46" name="SYS_C0010083">
+    <key id="112" parent="47" name="SYS_C0010083">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
       <ColNames>USERID
@@ -517,7 +562,7 @@ PROID</ColNames>
       <UnderlyingIndexName>SYS_C0010083</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="106" parent="46" name="SYS_C0010084">
+    <foreign-key id="113" parent="47" name="SYS_C0010084">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
       <ColNames>USERID</ColNames>
@@ -526,7 +571,7 @@ PROID</ColNames>
       <RefKeyName>SYS_C0010058</RefKeyName>
       <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="107" parent="46" name="SYS_C0010085">
+    <foreign-key id="114" parent="47" name="SYS_C0010085">
       <NameSurrogate>1</NameSurrogate>
       <ModifiedTimestamp>2017-10-30.18:55:38</ModifiedTimestamp>
       <ColNames>PROID</ColNames>

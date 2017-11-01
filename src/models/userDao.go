@@ -5,7 +5,6 @@ import (
 	"../util"
 	"fmt"
 	"log"
-	"github.com/elgs/gosqljson"
 )
 
 const (
@@ -73,46 +72,28 @@ func CheckRole(userId, role string) bool {
 
 func GetUsers() (string, error) {
 	sq := "select USERID,NAME,SEX,PHONE,ROLEID from USERS WHERE USE=0"
-	data, err := gosqljson.QueryDbToMapJSON(db.RDB, Camel, sq)
-	if err != nil {
-		return "", err
-		log.Fatalln(err.Error())
-	}
-	return data, err
+	return ExeSQLR(sq, Camel)
 }
 
 func AddUser(u *User) bool {
 	sq := "insert into USERS(USERID,PASSWORD,NAME,SEX,PHONE) values(%d,'%s','%s','%s','%s')"
 	sq = fmt.Sprintf(sq, u.UserId, u.Password, u.Name, u.Sex, u.Phone)
-	_, err := db.RDB.Exec(sq)
-	if err != nil {
-		log.Println(err.Error())
-		return false
-	}
-	return true
+	return ExeSQL(sq)
 }
 
 func DelUser(uId int) bool {
 	sq := "update USERS set USE=1 where USERID=%d"
 	sq = fmt.Sprintf(sq, uId)
-	_, err := db.RDB.Exec(sq)
-	if err != nil {
-		log.Println(err.Error())
-		return false
-	}
-	return true
+	return ExeSQL(sq)
 }
 
 func UpUser(u *User) bool {
 	sq := "update USERS set NAME='%s',SEX='%s',PHONE='%s',ROLEID=%d where USERID=%d"
 	sq = fmt.Sprintf(sq, u.Name, u.Sex, u.Phone, u.RoleId, u.UserId)
-	res, err := db.RDB.Exec(sq)
-	if err != nil {
-		log.Println(err.Error())
-		return false
-	}
-	if n, _ := res.LastInsertId(); n <= 0 {
-		return false
-	}
-	return true
+	return ExeSQL(sq)
+}
+
+func TT() bool {
+	sq := "INSERT INTO TEST(TID,T) VALUES (1,'1509515746')"
+	return ExeSQL(sq)
 }

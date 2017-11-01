@@ -18,6 +18,11 @@ var Bad = gin.H{
 	"message": "param is bad!",
 }
 
+var NoP = gin.H{
+	"code":    "401",
+	"message": "the order is not belong to you !",
+}
+
 func GetUsers(c *gin.Context) {
 	var us []models.User
 	data, err := models.GetUsers()

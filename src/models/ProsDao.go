@@ -1,32 +1,18 @@
 package models
 
 import (
-	"github.com/elgs/gosqljson"
-	"log"
-	db "../dataSource"
 	"fmt"
 )
 
 func GetPros() (string, error) {
 	sq := "select * from PRODUCT where USE=0"
-	data, err := gosqljson.QueryDbToMapJSON(db.RDB, Camel, sq)
-	if err != nil {
-		log.Fatalln(err.Error())
-		return "", err
-
-	}
-	return data, err
+	return ExeSQLR(sq, Camel)
 }
 
 func GetPro(proId string) (string, error) {
 	sq := "select * from PRODUCT where PROID='%s' and USE=0"
 	sq = fmt.Sprintf(sq, proId)
-	data, err := gosqljson.QueryDbToMapJSON(db.RDB, Camel, sq)
-	if err != nil {
-		log.Fatalln(err.Error())
-		return "", err
-	}
-	return data, err
+	return ExeSQLR(sq, Camel)
 }
 
 func AddPro(pro *Product) bool {
@@ -35,28 +21,13 @@ func AddPro(pro *Product) bool {
 	sq = fmt.Sprintf(sq, pro.ProId, pro.ProName, pro.ProSM,
 		pro.ProCom, pro.ProPrice, pro.ProCounts, pro.ProStyle, pro.OrderTime, pro.Marks)
 
-	res, err := db.RDB.Exec(sq)
-	if err != nil {
-		log.Println(err.Error())
-		return false
-	}
-
-	if n, _ := res.LastInsertId(); n <= 0 {
-		return false
-	}
-	return true
-
+	return ExeSQL(sq)
 }
 
-func DelPro(proId int) bool {
+func DelPro(proId int64) bool {
 	sq := "update PRODUCT set USE=1 where PROID='%d'"
 	sq = fmt.Sprintf(sq, proId)
-	_, err := db.RDB.Exec(sq)
-	if err != nil {
-		log.Println(err.Error())
-		return false
-	}
-	return true
+	return ExeSQL(sq)
 }
 
 func UpPro(pro *Product) bool {
@@ -64,33 +35,17 @@ func UpPro(pro *Product) bool {
 		"PROCOUNTS='%d',PROSTYLE='%s',ORDERTIME='%s',MARKS='%s' where PROID='%d'"
 	sq = fmt.Sprintf(sq, pro.ProName, pro.ProSM, pro.ProCom, pro.ProPrice,
 		pro.ProCounts, pro.ProStyle, pro.OrderTime, pro.Marks, pro.ProId)
-	fmt.Println(sq)
-	_, err := db.RDB.Exec(sq)
-	if err != nil {
-		log.Println(err.Error())
-		return false
-	}
-	return true
+	return ExeSQL(sq)
 }
 
 func AllPro(userId string) (string, error) {
 	sq := "select * from PRODUCT where PROID in (select PROID from USERSALER where USERID='%s')"
 	sq = fmt.Sprintf(sq, userId)
-	data, err := gosqljson.QueryDbToMapJSON(db.RDB, Camel, sq)
-	if err != nil {
-		log.Fatalln(err.Error())
-		return "", err
-	}
-	return data, err
+	return ExeSQLR(sq, Camel)
 }
 
 func AllSalePro() (string, error) {
 	sq := "select s.USERID salerId,p.*,u.NAME salerName, u.phone from " +
 		"PRODUCT p,USERSALER s,USERS u where p.PROID=s.PROID and u.USERID=s.USERID and s.USE=0"
-	data, err := gosqljson.QueryDbToMapJSON(db.RDB, Camel, sq)
-	if err != nil {
-		log.Fatalln(err.Error())
-		return "", err
-	}
-	return data, err
+	return ExeSQLR(sq, Camel)
 }

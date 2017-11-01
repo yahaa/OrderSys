@@ -7,12 +7,7 @@ import (
 
 var Router = gin.Default()
 
-func test(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"status": "ok",
-		"name":   "bad",
-	})
-}
+
 
 func init() {
 
@@ -20,7 +15,7 @@ func init() {
 
 	all := Router.Group("/api")
 	all.Use(Auth.MiddlewareFunc())
-	all.GET("/test", test)
+	all.GET("/test", Test)
 
 	Router.POST("/login", AuthAdmin.LoginHandler)
 	admin := Router.Group("api/admin")
@@ -48,5 +43,6 @@ func init() {
 	cus.GET("/products", AllSalePros) //获取所有销售员在销售的商品
 	cus.GET("/orders", GetOrds)    //获取自己的订单
 	cus.POST("/order", MakOrder)   //下订单
-	cus.GET("/order", DetOrder)    //某个订单详情
+	cus.GET("/order", DelOrder)    //某个订单详情
+	cus.PUT("/order",Play)
 }

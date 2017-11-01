@@ -6,6 +6,8 @@ import (
 	"../models"
 	"encoding/json"
 	"fmt"
+	"strconv"
+	"time"
 )
 
 type SPU struct {
@@ -45,10 +47,75 @@ func GetOrds(c *gin.Context) {
 
 //下订单
 func MakOrder(c *gin.Context) {
+	uId, err := strconv.Atoi(fmt.Sprint(c.Keys["userID"]))
+	if err != nil {
+		c.JSON(400, Bad)
+		return
+	}
+	ti := time.Now()
+	var ords models.Orders
+	c.BindJSON(&ords)
+	ords.UserId = uId
+	ords.OrdId = ti.Unix()
+	ords.OrderTime = ti.String()
+	ords.Total = ords.Price * float64(ords.N)
+
+	if models.MakOrder(&ords) {
+		c.JSON(200, Good)
+	} else {
+		c.JSON(400, Bad)
+	}
 
 }
 
-//点单详情
-func DetOrder(c *gin.Context) {
+//退单
+func DelOrder(c *gin.Context) {
+	uId, err := strconv.Atoi(fmt.Sprint(c.Keys["userID"]))
+	if err != nil {
+		c.JSON(401, Bad)
+		return
+	}
+	var ord models.Orders
+	c.BindJSON(&ord)
 
+	if uId != ord.UserId {
+		c.JSON(401, NoP)
+		return
+	}
+
+	if models.DelOrd(ord.OrdId) {
+		c.JSON(200, Good)
+	} else {
+		c.JSON(400, Bad)
+	}
 }
+
+func Play(c *gin.Context) {
+	uId, err := strconv.Atoi(fmt.Sprint(c.Keys["userID"]))
+	if err != nil {
+		c.JSON(401, Bad)
+		return
+	}
+	var ord models.Orders
+	c.BindJSON(&ord)
+
+	if uId != ord.UserId {
+		c.JSON(401, NoP)
+		return
+	}
+
+	if models.Play(ord.OrdId) {
+		c.JSON(200, Good)
+	} else {
+		c.JSON(400, Bad)
+	}
+}
+
+func Test(c *gin.Context) {
+	models.TT()
+	c.JSON(200, gin.H{
+		"status": "ok",
+		"name":   "bad",
+	})
+}
+
