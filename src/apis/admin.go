@@ -45,9 +45,8 @@ func AddUser(c *gin.Context) {
 }
 
 func DelUser(c *gin.Context) {
-	var u models.User
-	c.BindJSON(&u)
-	if models.DelUser(u.UserId) {
+	uId:=c.Param("userId")
+	if models.DelUser(uId) {
 		c.JSON(200, Good)
 	} else {
 		c.JSON(400, Bad)

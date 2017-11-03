@@ -30,7 +30,7 @@ type Orders struct {
 	UserId      int     `json:"userId,string"` //该订单所属的用户 n
 	SaleId      int     `json:"saleId,string"` //售货员id
 	ProId       int     `json:"proId,string"`  //产品编号
-	N           int     `json:"n,string"`      //产品数量
+	Nums        int     `json:"nums,string"`   //产品数量
 	Total       float64 `json:"total,string"`  //订单总价格
 	OrderTime   string  `json:"orderTime"`     //下单时间 n
 	Marks       string  `json:"marks"`         //备注
@@ -42,7 +42,7 @@ type Orders struct {
 }
 
 type Product struct {
-	ProId     int64     `json:"proId,string"`
+	ProId     int64   `json:"proId,string"`
 	ProName   string  `json:"proName"`
 	ProSM     string  `json:"proSM"` //产品规格型号
 	ProCom    string  `json:"proCom"`

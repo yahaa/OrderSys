@@ -30,6 +30,18 @@ func AllSalePros(c *gin.Context) {
 
 }
 
+func GetSelf(c *gin.Context) {
+	uId := fmt.Sprint(c.Keys["userID"])
+	u, err := models.GetSelf(uId)
+	if err != nil {
+		log.Println(err.Error())
+		c.JSON(403, Bad)
+		return
+	}
+
+	c.JSON(200, u)
+}
+
 //获取所有订单
 func GetOrds(c *gin.Context) {
 	uId := fmt.Sprint(c.Keys["userID"])
@@ -49,6 +61,7 @@ func GetOrds(c *gin.Context) {
 func MakOrder(c *gin.Context) {
 	uId, err := strconv.Atoi(fmt.Sprint(c.Keys["userID"]))
 	if err != nil {
+		fmt.Println(789)
 		c.JSON(400, Bad)
 		return
 	}
@@ -58,32 +71,23 @@ func MakOrder(c *gin.Context) {
 	ords.UserId = uId
 	ords.OrdId = ti.Unix()
 	ords.OrderTime = ti.String()
-	ords.Total = ords.Price * float64(ords.N)
+	ords.Total = ords.Price * float64(ords.Nums)
+	fmt.Println(ords)
 
 	if models.MakOrder(&ords) {
 		c.JSON(200, Good)
-	} else {
-		c.JSON(400, Bad)
+		return
 	}
+	fmt.Println(32323)
+	c.JSON(400, Bad)
 
 }
 
 //退单
 func DelOrder(c *gin.Context) {
-	uId, err := strconv.Atoi(fmt.Sprint(c.Keys["userID"]))
-	if err != nil {
-		c.JSON(401, Bad)
-		return
-	}
-	var ord models.Orders
-	c.BindJSON(&ord)
-
-	if uId != ord.UserId {
-		c.JSON(401, NoP)
-		return
-	}
-
-	if models.DelOrd(ord.OrdId) {
+	uId := fmt.Sprint(c.Keys["userID"])
+	ordId := c.Param("ordId")
+	if models.DelOrd(ordId, uId) {
 		c.JSON(200, Good)
 	} else {
 		c.JSON(400, Bad)
@@ -91,20 +95,9 @@ func DelOrder(c *gin.Context) {
 }
 
 func Play(c *gin.Context) {
-	uId, err := strconv.Atoi(fmt.Sprint(c.Keys["userID"]))
-	if err != nil {
-		c.JSON(401, Bad)
-		return
-	}
-	var ord models.Orders
-	c.BindJSON(&ord)
-
-	if uId != ord.UserId {
-		c.JSON(401, NoP)
-		return
-	}
-
-	if models.Play(ord.OrdId) {
+	uId := fmt.Sprint(c.Keys["userID"])
+	ordId := c.Param("ordId")
+	if models.Play(ordId, uId) {
 		c.JSON(200, Good)
 	} else {
 		c.JSON(400, Bad)
@@ -118,4 +111,3 @@ func Test(c *gin.Context) {
 		"name":   "bad",
 	})
 }
-

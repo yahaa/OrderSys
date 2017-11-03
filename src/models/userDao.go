@@ -35,6 +35,15 @@ func CheckUser(uId string, password string) (string, error) {
 	return userId, err
 }
 
+func GetSelf(uId string) (*User, error) {
+	sq := "select USERID,NAME,SEX,PHONE,ROLEID from USERS where USERID='%s'"
+	sq = fmt.Sprintf(sq, uId)
+	var u User
+	row := db.RDB.QueryRow(sq)
+	err := row.Scan(&u.UserId, &u.Name, &u.Sex, &u.Phone, &u.RoleId)
+	return &u, err
+}
+
 func CheckExisU(uId string) bool {
 	var userId string
 	sq := "select USERID from USERS WHERE USERID=%s"
@@ -81,8 +90,8 @@ func AddUser(u *User) bool {
 	return ExeSQL(sq)
 }
 
-func DelUser(uId int) bool {
-	sq := "update USERS set USE=1 where USERID=%d"
+func DelUser(uId string) bool {
+	sq := "update USERS set USE=1 where USERID='%s'"
 	sq = fmt.Sprintf(sq, uId)
 	return ExeSQL(sq)
 }
