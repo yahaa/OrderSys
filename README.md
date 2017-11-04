@@ -45,5 +45,5 @@ go get github.com/gin-contrib/cors
 * go run app.go
 
 ### 截图
-
+![image](https://github.com/yahaa/OrderSys/raw/master/run.png)
 
