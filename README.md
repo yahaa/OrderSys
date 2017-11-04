@@ -47,3 +47,6 @@ go get github.com/gin-contrib/cors
 ### 截图
 ![image](https://github.com/yahaa/OrderSys/raw/master/run.png)
 
+### 前端情况下面链接
+[OrderSys-ui](https://github.com/yahaa/OrderSys-ui)
+
