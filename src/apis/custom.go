@@ -72,8 +72,6 @@ func MakOrder(c *gin.Context) {
 	ords.OrdId = ti.Unix()
 	ords.OrderTime = ti.String()
 	ords.Total = ords.Price * float64(ords.Nums)
-	fmt.Println(ords)
-
 	if models.MakOrder(&ords) {
 		c.JSON(200, Good)
 		return
