@@ -24,8 +24,8 @@ func AddPro(pro *Product) bool {
 	return ExeSQL(sq)
 }
 
-func DelPro(proId int64) bool {
-	sq := "update PRODUCT set USE=1 where PROID='%d'"
+func DelPro(proId string) bool {
+	sq := "update PRODUCT set USE=1 where PROID='%s'"
 	sq = fmt.Sprintf(sq, proId)
 	return ExeSQL(sq)
 }

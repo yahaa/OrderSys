@@ -36,15 +36,13 @@ func init() {
 	admin.PUT("/user", UpUser)
 	admin.GET("/products", GetPros)
 
-
 	admin.POST("/product", AddPro)
 	admin.GET("/product", GetPro)
-	admin.DELETE("/product", DelPro)
+	admin.DELETE("/product/:proId", DelPro)
 	admin.PUT("/product", UPPro)
 
-
 	admin.POST("/saler", AddSaler)
-	admin.DELETE("/saler", DelSaler)
+	admin.PUT("/saler", DelSaler)
 	admin.GET("/salers", GetSals) //获取系统中所有销售员以及其销售情
 
 	saler := Router.Group("api/saler")

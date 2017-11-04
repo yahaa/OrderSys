@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"../util"
 	"log"
+	"time"
 )
 
 var Good = gin.H{
@@ -45,7 +46,7 @@ func AddUser(c *gin.Context) {
 }
 
 func DelUser(c *gin.Context) {
-	uId:=c.Param("userId")
+	uId := c.Param("userId")
 	if models.DelUser(uId) {
 		c.JSON(200, Good)
 	} else {
@@ -80,6 +81,8 @@ func GetPros(c *gin.Context) {
 func AddPro(c *gin.Context) {
 	var pro models.Product
 	c.BindJSON(&pro)
+	t := time.Now().UTC()
+	pro.OrderTime = t.String()
 	if models.AddPro(&pro) {
 		c.JSON(200, Good)
 	} else {
@@ -105,9 +108,8 @@ func GetPro(c *gin.Context) {
 }
 
 func DelPro(c *gin.Context) {
-	var pro models.Product
-	c.BindJSON(&pro)
-	if models.DelPro(pro.ProId) {
+	proId:=c.Param("proId")
+	if models.DelPro(proId) {
 		c.JSON(200, Good)
 	} else {
 		c.JSON(400, Bad)
